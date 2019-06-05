@@ -91,9 +91,14 @@ body * {
         margin-right: auto;
         border-radius: 50px;
         margin-top: 10px;
+        background-color: #f0f0f0;
+        border: #fefe solid 1px;
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: contain;
+        &:hover {
+            background-color: #fff;
+        }
     }
     .title {
         text-align: center;

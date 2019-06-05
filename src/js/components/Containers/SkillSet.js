@@ -21,7 +21,7 @@ import axios from 'axios'
    render() {
      return (
       <div className = "skill-set">
-         {this.state.skills.map(({skill, i}) => {
+         {this.state.skills.map((skill, i) => {
               return <Skill key ={i} icon = {skill.icon} title = {skill.title} />
          })}
       </div>
