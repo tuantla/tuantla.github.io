@@ -1,2 +1,10 @@
+import {App} from '$components/components'
+import ReactDOM from 'react-dom'
+import React from 'react'
 import './css/app.scss'
-//import FormContainer from "./js/components/container/FormContainer.jsx";
+
+const appRoot = document.getElementById('appRoot')
+appRoot ? ReactDOM.render((
+        <App />
+), appRoot): false
+
