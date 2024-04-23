@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+</head>
+<body>
+  <div id="jstree_demo_div"></div>
+  <script type="text/javascript">
+    $(function () {
+      $.getJSON('./file.json')
+        .done(data =>
+          {
+            console.log(data)
+            $('#jstree_demo_div').jstree({core: {data: data}})
+            .bind("loaded.jstree", function (event, data) {
+                    $(this).jstree("open_all")
+            });
+          })
+    });
+  </script>
+</body>
+</html>
