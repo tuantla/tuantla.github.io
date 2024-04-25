@@ -1,3 +1,3 @@
 layout: page
-title: "static"
-permalink: /static
+title: "statica"
+permalink: /statica
