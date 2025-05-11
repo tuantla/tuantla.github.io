@@ -11,7 +11,7 @@ module.exports = (env, options) => {
     return {
       mode: options.mode,
       output: {
-        path: path.join(__dirname,'dist'),
+        path: path.join(__dirname,'run'),
         filename: devMode? '[name].[hash].js' : '[name].js',
       },
       module: {
