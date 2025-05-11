@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --port 5700 --mode development --hot --inline --env.NODE_ENV=dev",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --env.NODE_ENV=prod"
+    "start":  "webpack serve --port 5700 --mode development --hot  --node-env dev",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --node-env prod"
   },
   "author": "",
   "license": "ISC",
@@ -17,22 +17,24 @@
     "@babel/preset-react": "^7.0.0",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^2.1.1",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^16.0.5",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "url-loader": "^1.1.2",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "5",
+    "webpack-cli": "4",
+    "webpack-dev-server": "4"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^13.0.0",
     "global": "^4.4.0",
     "sass": "^1.88.0",
     "sass-migrator": "^2.3.2",

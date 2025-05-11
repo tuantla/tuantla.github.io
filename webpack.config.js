@@ -4,16 +4,18 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const webpack = require('webpack')
 const path = require('path')
-
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 module.exports = (env, options) => {
     const $env = env.NODE_ENV? env.NODE_ENV :'lab'
     const devMode = options.mode !== 'production'
     return {
       mode: options.mode,
       output: {
-        path: path.join(__dirname,'run'),
+        path: path.join(__dirname,'dist'),
         filename: devMode? '[name].[hash].js' : '[name].js',
       },
+      devtool: devMode ? 'source-map' : false,
       module: {
         rules: [
           {
@@ -44,10 +46,17 @@ module.exports = (env, options) => {
               }]
           },
           { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-            loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' }
+            use:[{
+                loader: 'url-loader',
+              options: {
+                limit: 100000,
+                name: "fonts/[name].[ext]"
+              }
+            }]}
         ]
       },
       plugins: [
+        new CaseSensitivePathsPlugin(),
         new MiniCssExtractPlugin({
           filename  : '[name].css',
           chunkFilename: "[id].css"
@@ -58,9 +67,12 @@ module.exports = (env, options) => {
         }),
         new webpack.DefinePlugin({
           $ENV: JSON.stringify($env)
-        })
+        }),
+        new CopyWebpackPlugin({
+          patterns: [
+          { from: 'dist/**', to: './' },
+        ]})
       ],
-      devtool: devMode? 'source-map':'',
       optimization: {
         minimizer: [
           new UglifyJsPlugin({
