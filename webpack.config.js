@@ -70,8 +70,17 @@ module.exports = (env, options) => {
         }),
         new CopyWebpackPlugin({
           patterns: [
-          { from: 'dist/**', to: './' },
-        ]})
+            {
+              from:  'dist',
+              to: path.resolve(__dirname, '.'),      // destination: root
+              noErrorOnMissing: true,
+              globOptions: {
+                dot: true,
+                gitignore: true,
+                ignore: ['**/subfolder-to-ignore/**'], // exclude nested dirs if needed
+              },
+            }]
+        })
       ],
       optimization: {
         minimizer: [
