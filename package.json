@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --port 5700 --mode development --hot --inline --env.NODE_ENV=dev",
-    "build": "webpack --mode production --env.NODE_ENV=prod"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production --env.NODE_ENV=prod"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +21,6 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -32,5 +31,11 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "sass": "^1.88.0",
+    "sass-migrator": "^2.3.2",
+    "vite": "^6.3.5"
   }
 }
