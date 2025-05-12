@@ -4,8 +4,8 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const webpack = require('webpack')
 const path = require('path')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const {createReadStream} = require("fs");
 module.exports = (env, options) => {
     const $env = env.NODE_ENV? env.NODE_ENV :'lab'
     const devMode = options.mode !== 'production'
@@ -16,6 +16,22 @@ module.exports = (env, options) => {
         filename: devMode? '[name].[hash].js' : '[name].js',
       },
       devtool: devMode ? 'source-map' : false,
+      devServer: {
+        proxy: {
+          "/data/*.json": {
+            selfHandleResponse: true,
+            bypass(req, resp) {
+              const id = req.url.match(/data\/([-\w]+)\.json/)[1];
+              resp.header("Content-Type", "application/json");
+              createReadStream(`./data/${id}.json`).pipe(resp);
+            },
+          },
+        },
+        historyApiFallback: true,
+        static: {
+          directory: path.join(__dirname, 'data'),
+        },
+      },
       module: {
         rules: [
           {
@@ -68,19 +84,9 @@ module.exports = (env, options) => {
         new webpack.DefinePlugin({
           $ENV: JSON.stringify($env)
         }),
-        new CopyWebpackPlugin({
-          patterns: [
-            {
-              from:  'dist',
-              to: path.resolve(__dirname, '.'),      // destination: root
-              noErrorOnMissing: true,
-              globOptions: {
-                dot: true,
-                gitignore: true,
-                ignore: ['**/subfolder-to-ignore/**'], // exclude nested dirs if needed
-              },
-            }]
-        })
+        new webpack.ProvidePlugin({
+          "React": "react",
+        }),
       ],
       optimization: {
         minimizer: [

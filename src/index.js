@@ -1,10 +1,17 @@
 import {App} from '$components/components'
-import ReactDOM from 'react-dom'
-import React from 'react'
-import './css/app.scss'
+import {createRoot} from 'react-dom/client';
+import {HashRouter} from "react-router-dom";
+import {default as TopNav} from '$components/app/top-nav'
 
-const appRoot = document.getElementById('appRoot')
-appRoot ? ReactDOM.render((
-        <App />
-), appRoot): false
+import './css/app.scss'
+import React from "react";
+
+const appRoot = createRoot(document.getElementById('appRoot'))
+appRoot.render(
+    <React.StrictMode>
+      <HashRouter>
+        <TopNav/>
+        <App/>
+      </HashRouter>
+    </React.StrictMode>)
 
