@@ -1,10 +1,9 @@
 [
-    {
-        "icon": "https://image.flaticon.com/icons/svg/226/226777.svg",
-        "title": "Java"
-    },
-    {
-        "icon": "https://image.flaticon.com/icons/svg/226/226777.svg",
-        "title": "Scala"
-    }
+  { "title": "Java", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", "category": "Language", "level": 5 },
+  { "title": "Scala", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg", "category": "Language", "level": 4 },
+  { "title": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", "category": "Language", "level": 4 },
+  { "title": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", "category": "Frontend", "level": 4 },
+  { "title": "Spring", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg", "category": "Backend", "level": 5 },
+  { "title": "AWS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg", "category": "Cloud", "level": 4 },
+  { "title": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "category": "DevOps", "level": 4 }
 ]
