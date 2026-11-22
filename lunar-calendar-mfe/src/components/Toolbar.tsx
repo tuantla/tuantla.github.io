@@ -60,10 +60,19 @@ export function Toolbar({ month, year, onChange, onToday }: Props) {
             ))}
           </select>
         </div>
-        <button className={BTN} onClick={onToday}>Hôm nay</button>
       </div>
-      <div className="mt-1 text-xs text-gray-500 text-center">
-        Năm {getYearCanChi(year)}
+      <div className="mt-2 flex items-center justify-center gap-3">
+        <a
+          href={import.meta.env.BASE_URL}
+          onClick={e => {
+            e.preventDefault()
+            onToday()
+          }}
+          className="inline-flex items-center min-h-11 text-sm font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800"
+        >
+          Hôm nay
+        </a>
+        <span className="text-sm text-gray-600">Năm {getYearCanChi(year)}</span>
       </div>
     </div>
   )
