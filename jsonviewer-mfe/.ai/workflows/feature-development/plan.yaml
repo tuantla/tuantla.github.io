@@ -1,0 +1,9 @@
+name: feature-development
+
+inputs:
+  - feature_path
+
+steps:
+  - id: load-context
+    agent: orchestrator
+    input: ${feature_path}/.agents.md

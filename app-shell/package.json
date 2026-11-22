@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "dist": "yarn build && node scripts/dist.mjs"
+    "dist": "tsc -b && vite build --mode prd && node scripts/dist.mjs"
   },
   "dependencies": {
     "react": "^19",

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-16" agent="Claude Code" version="24.0.0" type="device">
+  <diagram id="agentic-workflow" name="Agentic Programming Workflow">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Agentic Programming Workflow&lt;/b&gt;&lt;br&gt;NestJS Migration — appstudio-proxy-service" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="480" y="20" width="480" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- HUMAN / ORCHESTRATOR -->
+        <!-- ==================== -->
+        <mxCell id="human-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;dashed=1;dashPattern=5 5;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="human" value="&lt;b&gt;👤 Human Developer&lt;/b&gt;&lt;br&gt;Defines features in .ai/&lt;br&gt;Triggers agents via prompts" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="590" y="90" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Human → Plan -->
+        <mxCell id="arrow-human-plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="human-box" target="plan-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-human-plan-label" value="&lt;i&gt;defines feature&lt;br&gt;in .ai/features/&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-human-plan">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- .AI/ CONTEXT (CENTER) -->
+        <!-- ==================== -->
+        <mxCell id="plan-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F3FF;strokeColor=#3399FF;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="220" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="plan" value="&lt;b&gt;📋 .ai/ — Source of Truth&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; size=&quot;1&quot;&gt;features/nestjs/plan.yaml&lt;br&gt;features/nestjs/research.md &amp;amp; analysis.md&lt;br&gt;governance/ • agents/ • workflows/&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="225" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- PHASE 1: IMPLEMENT  -->
+        <!-- ==================== -->
+
+        <!-- Arrow: Plan → Implementer -->
+        <mxCell id="arrow-plan-impl" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="plan-box" target="impl-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-plan-impl-label" value="&lt;b&gt;Phase 1&lt;/b&gt;&lt;br&gt;&lt;i&gt;reads plan.yaml&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-plan-impl">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="410" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="impl" value="&lt;b&gt;🔨 backend-implementer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Reads: plan.yaml, research.md, analysis.md&lt;br&gt;Writes: src/ modules, controllers, services&lt;br&gt;Follows: NestJS patterns, SOLID, strict TS&lt;br&gt;Output: Working code + package.json + Dockerfile" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="415" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Implementer → Source Code -->
+        <mxCell id="arrow-impl-code" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="impl-box" target="code-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-impl-code-label" value="&lt;i&gt;produces&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-impl-code">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="code-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="590" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="code" value="&lt;b&gt;📁 src/&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; size=&quot;1&quot;&gt;main.ts • app.module.ts&lt;br&gt;proxy/ • health/ • cookies/&lt;br&gt;config/configuration.ts&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="595" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- PHASE 2: REVIEW     -->
+        <!-- ==================== -->
+
+        <!-- Arrow: Plan → Reviewer -->
+        <mxCell id="arrow-plan-rev" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="plan-box" target="rev-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-plan-rev-label" value="&lt;b&gt;Phase 2&lt;/b&gt;&lt;br&gt;&lt;i&gt;reviews code vs plan&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-plan-rev">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rev-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6E6;strokeColor=#CC6666;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="410" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="rev" value="&lt;b&gt;🔍 reviewer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Reads: src/, plan.yaml, governance/&lt;br&gt;Checks: plan alignment, config, security&lt;br&gt;Protocol: verify → evaluate → push back&lt;br&gt;Output: reviews/001-env-loading.md (findings)" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="415" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Reviewer → Feedback -->
+        <mxCell id="arrow-rev-feedback" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="rev-box" target="feedback-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-rev-feedback-label" value="&lt;i&gt;produces findings&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-rev-feedback">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="feedback-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="590" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback" value="&lt;b&gt;📝 reviews/&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; size=&quot;1&quot;&gt;001-env-loading.md&lt;br&gt;severity: critical | warning | suggestion&lt;br&gt;Finding → Expected → Recommendation&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="595" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Feedback → Implementer (loop back) -->
+        <mxCell id="arrow-feedback-impl" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;dashed=1;dashPattern=5 5;strokeColor=#CC6666;" edge="1" parent="1" source="feedback-box" target="code-box">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-feedback-impl-label" value="&lt;font color=&quot;#CC6666&quot;&gt;&lt;i&gt;implementer fixes&lt;/i&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="arrow-feedback-impl">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- PHASE 3: QA WRITER  -->
+        <!-- ==================== -->
+
+        <!-- Arrow: Plan → QA Writer -->
+        <mxCell id="arrow-plan-qa" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="plan-box" target="qa-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-plan-qa-label" value="&lt;b&gt;Phase 3&lt;/b&gt;&lt;br&gt;&lt;i&gt;writes test docs&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-plan-qa">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="qa-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="410" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="qa" value="&lt;b&gt;📋 qa-writer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Reads: plan.yaml, src/, reviews/&lt;br&gt;Writes: test plan, 17 test cases (P0–P2)&lt;br&gt;Writes: smoke / regression / deployment checklists&lt;br&gt;Output: qa/test-plan.md + qa/test-cases/" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="415" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: QA → Test Docs -->
+        <mxCell id="arrow-qa-docs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="qa-box" target="docs-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-qa-docs-label" value="&lt;i&gt;produces&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-qa-docs">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="docs-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="590" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="docs" value="&lt;b&gt;📄 qa/&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; size=&quot;1&quot;&gt;test-plan.md • test-cases/TC-001..017&lt;br&gt;checklists/smoke-test.md&lt;br&gt;checklists/regression.md • deployment.md&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1055" y="595" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- PHASE 4: TESTER     -->
+        <!-- ==================== -->
+
+        <!-- Arrow: Test Docs → Tester -->
+        <mxCell id="arrow-docs-tester" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="docs-box" target="tester-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-docs-tester-label" value="&lt;b&gt;Phase 4&lt;/b&gt;&lt;br&gt;&lt;i&gt;executes tests&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-docs-tester">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="tester-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="730" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tester" value="&lt;b&gt;🧪 tester&lt;/b&gt;&lt;br&gt;&lt;br&gt;Reads: qa/test-plan.md, qa/test-cases/&lt;br&gt;Executes: curl commands against live service&lt;br&gt;Verifies: status codes, headers, response bodies&lt;br&gt;Output: reports/2026-04-16-test-report.md" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="735" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Tester → Report -->
+        <mxCell id="arrow-tester-report" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="tester-box" target="report-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-tester-report-label" value="&lt;i&gt;produces report&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#666666;" vertex="1" connectable="0" parent="arrow-tester-report">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="report-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="520" y="750" width="340" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="report" value="&lt;b&gt;✅ Test Report&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; size=&quot;1&quot;&gt;P0: 4/4 PASS • P1: 8/9 PASS • P2: 3/4 PASS&lt;br&gt;Bugs found: 2 (both fixed)&lt;br&gt;  BUG-001: catch-all route • BUG-002: bodyParser&lt;br&gt;Verdict: PASS&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="753" width="300" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Report → Implementer (bug fixes loop) -->
+        <mxCell id="arrow-report-impl" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0;exitY=0.5;entryX=0.5;entryY=1;dashed=1;dashPattern=5 5;strokeColor=#6C8EBF;" edge="1" parent="1" source="report-box" target="code-box">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-report-impl-label" value="&lt;font color=&quot;#6C8EBF&quot;&gt;&lt;i&gt;bugs → implementer fixes&lt;/i&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="arrow-report-impl">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- LEGEND               -->
+        <!-- ==================== -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="730" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;br&gt;🟢 Green = Implementation&lt;br&gt;🔴 Red = Review (finds issues)&lt;br&gt;🟣 Purple = QA Documentation&lt;br&gt;🔵 Blue = Test Execution&lt;br&gt;🟡 Yellow = Artifacts (.ai/ outputs)&lt;br&gt;⇢ Dashed = Feedback loop (fixes)" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="95" y="735" width="250" height="120" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

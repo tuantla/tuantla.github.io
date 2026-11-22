@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>simple-http</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: #000;
+      }
+      #frame {
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      sandbox="allow-scripts allow-same-origin"
+      id="frame"
+      src="http://localhost:3000"
+      allow="clipboard-read; clipboard-write"
+    ></iframe>
+    <script>
+      (function () {
+        window.addEventListener("message", function (event) {
+          var data = event && event.data;
+          if (!data || typeof data !== "object") return;
+
+          if (
+            data.type === "redirect" &&
+            typeof data.redirectUri === "string" &&
+            data.redirectUri
+          ) {
+            var target = data.redirectUri;
+            var uuidCallback =
+              /\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(\/auth\/[^/]+\/callback)(?=$|[/?#])/i;
+            try {
+              var url = new URL(data.redirectUri);
+              var inner = url.searchParams.get("redirect_uri");
+              if (inner) {
+                var rewritten = inner.replace(uuidCallback, "/expo$1");
+                if (rewritten !== inner) {
+                  url.searchParams.set("redirect_uri", rewritten);
+                  target = url.toString();
+                }
+              }
+            } catch (_) {
+              // not a parseable URL - leave target as-is
+            }
+            console.log("[simple-http] redirect ->", target);
+            window.location.href = target;
+          }
+        });
+
+        var match = window.location.pathname.match(
+          /^\/auth\/([^/]+)\/callback\/?$/,
+        );
+        if (match) {
+          var provider = match[1];
+          var params = {};
+          var search = new URLSearchParams(window.location.search);
+          search.forEach(function (value, key) {
+            params[key] = value;
+          });
+
+          var frame = document.getElementById("frame");
+          var callbackPayload = {
+            type: "callback",
+            provider: provider,
+            params: params,
+          };
+          var callbackSent = false;
+
+          var send = function () {
+            if (callbackSent) return;
+            callbackSent = true;
+            console.log("[simple-http] callback -> iframe", provider, params);
+            frame.contentWindow.postMessage(callbackPayload, "*");
+          };
+
+          // Primary path: the Expo app signals "app_ready" once its postMessage
+          // listener is registered.  Send then, guaranteeing no race condition.
+          window.addEventListener("message", function (readyEvent) {
+            if (
+              readyEvent.source === frame.contentWindow &&
+              readyEvent.data &&
+              readyEvent.data.type === "app_ready"
+            ) {
+              send();
+            }
+          });
+
+          // Fallback: if "app_ready" never arrives (e.g. the app signalled
+          // before this listener was registered), retry after the iframe has
+          // fully loaded plus a short buffer for React to mount.
+          frame.addEventListener("load", function () {
+            setTimeout(send, 1000);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
