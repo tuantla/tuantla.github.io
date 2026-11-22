@@ -1,7 +1,7 @@
 import { dayOfWeek, getCanChi, getMonth, jdn, MAX_YEAR, MIN_YEAR } from '../lib/lunar'
 
 const WEEKDAYS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
-/** The selected month plus the following months shown side by side */
+/** The selected month plus the following months, stacked vertically */
 const MONTHS_SHOWN = 3
 
 function dowColor(dow: number) {
@@ -16,7 +16,7 @@ function MonthGrid({ month, year, today }: { month: number; year: number; today:
   const isCurrentMonth = today.getMonth() + 1 === month && today.getFullYear() === year
 
   return (
-    <section className="shrink-0 snap-start w-[88%] sm:w-[46%] lg:w-[calc((100%-2rem)/3)]">
+    <section>
       <h2 className="text-sm font-semibold text-gray-700 text-center mb-1">
         Tháng {month} / {year}
       </h2>
@@ -69,8 +69,7 @@ export function Calendar({ month, year, today }: { month: number; year: number; 
 
   return (
     <div className="flex-1 overflow-auto p-2 sm:p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))]">
-      {/* key resets the horizontal scroll position when the base month changes */}
-      <div key={`${year}-${month}`} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
+      <div className="mx-auto max-w-3xl flex flex-col gap-6">
         {months.map(m => (
           <MonthGrid key={`${m.year}-${m.month}`} month={m.month} year={m.year} today={today} />
         ))}
