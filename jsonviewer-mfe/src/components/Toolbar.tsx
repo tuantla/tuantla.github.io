@@ -34,6 +34,17 @@ function Btn({
 export function Toolbar({ onFormat, onMinify, onFlatten, onClear, onSample, hasError, isValid }: Props) {
   return (
     <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border-b border-gray-200 flex-wrap">
+      <a
+        href={`${import.meta.env.VITE_APP_SHELL_URL}/`}
+        title="Home"
+        aria-label="Home"
+        className="p-1.5 rounded text-gray-600 hover:bg-gray-200 transition-colors"
+      >
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M3 11l9-8 9 8" />
+          <path d="M5 10v10h5v-6h4v6h5V10" />
+        </svg>
+      </a>
       <span className="font-semibold text-gray-700 text-sm mr-2">JSON Viewer</span>
       <div className="h-4 w-px bg-gray-300" />
       <Btn onClick={onFormat}>Format</Btn>
