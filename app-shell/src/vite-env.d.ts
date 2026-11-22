@@ -3,6 +3,7 @@
 interface ImportMetaEnv {
   readonly VITE_PUBLIC_URL: string
   readonly VITE_JSONVIEWER_URL: string
+  readonly VITE_LUNAR_CALENDAR_URL: string
 }
 
 interface ImportMeta {

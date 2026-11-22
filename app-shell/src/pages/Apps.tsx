@@ -12,6 +12,9 @@ export function Apps() {
       <a href={`${import.meta.env.VITE_JSONVIEWER_URL}/`} className={CARD}>
         JsonViewer
       </a>
+      <a href={`${import.meta.env.VITE_LUNAR_CALENDAR_URL}/`} className={CARD}>
+        Lunar Calendar
+      </a>
     </div>
   )
 }
